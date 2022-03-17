@@ -33,10 +33,12 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo "welcome $name!"
-          echo "this repository is $github.repository"
-          echo "repository:$GITHUB_REPOSITORY"
+          echo "repository1: ${github.repository}"
+          echo "repository2: $GITHUB_REPOSITORY"
           echo "the token is ${token}"
-          echo "SERVER PORT: ${secrets.PORT}"
-          echo "SERVER IP: ${secrets.IP}"
+          echo "SERVER PORT: ${PORT}"
+          echo "SERVER IP: $IP"
         env:
           token: ${{ github.env }}
+          port: ${{ secrets.PORT }}
+          IP: ${{secrets.IP}}
